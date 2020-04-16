@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class ElementsHelper {
 
         private WebDriver driver;
@@ -12,16 +14,27 @@ public class ElementsHelper {
             this.driver = driver;
         }
 
-        public boolean isELementPresent(By element, int timeout) {
+        public boolean isElementPresence(By element, int timeout) {
 
-            WebDriverWait wait = new WebDriverWait (driver, timeout);
-            try {
-                wait.until(ExpectedConditions.presenceOfElementLocated(element));
-                return true;
-            } catch (NoSuchElementException e) {
-                throw new RuntimeException("Web element is not presence: " + element, e);
-            }
+        WebDriverWait wait = new WebDriverWait (driver, timeout);
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(element));
+            return true;
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("Web element is not presence: " + element, e);
         }
+    }
+
+    public boolean isElementVisible(By element, int timeout) {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+            return true;
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("Web element is not visible: " + element, e);
+        }
+    }
     }
 
 
