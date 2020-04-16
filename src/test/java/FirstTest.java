@@ -5,10 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HeaderTabs;
-import pages.LoginPage;
-import pages.YourProfilePage;
-import pages.YourRepositoriesPage;
+import pages.*;
 
 
 public class FirstTest {
@@ -19,11 +16,16 @@ public class FirstTest {
    HeaderTabs headerTabs = new HeaderTabs();
    YourProfilePage yourProfilePage = new YourProfilePage();
    YourRepositoriesPage yourRepositoriesPage = new YourRepositoriesPage();
-
+   YourProjectsPage yourProjectsPage = new YourProjectsPage();
+   YourStarsPage yourStarsPage = new YourStarsPage();
+   YourGistsPage yourGistsPage = new YourGistsPage();
+   FeaturePreviewPage featurePreviewPage = new FeaturePreviewPage();
+   HelpPage helpPage = new HelpPage();
+   SettingsPage settingsPage = new SettingsPage();
 
 
    @Test (priority = 1)
-   public void logInPAge () {
+   public void logInPage () {
       ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
       driver = new ChromeDriver();
       driver.get("https://github.com/login");
@@ -52,7 +54,6 @@ public class FirstTest {
     @Test (priority = 3)
     public void yourProfilePage () {
        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-
        driver.findElement(yourProfilePage.yourProfileButton).click();
 
        boolean overviewButtonIsDisplayed = driver.findElement(yourProfilePage.overviewProfileButton).isDisplayed();
@@ -80,49 +81,99 @@ public class FirstTest {
        Assert.assertFalse(languageOptionsIsSelected, "languageOptions should not be selected");
     }
 
+    @Test (priority = 5)
+    public void yourProjectsPage () {
+       driver.findElement(headerTabs.profileAndMoreMenuButton).click();
+       driver.findElement(yourProjectsPage.yourProjectsButton).click();
 
+       boolean newProjectButtonIsDisplayed = driver.findElement(yourProjectsPage.newProjectButton).isDisplayed();
+        Assert.assertTrue(newProjectButtonIsDisplayed,"newProjectButton should be displayed");
 
-      /*driver.findElement(By.cssSelector("[aria-label='View profile and more']")).click();
-      boolean yourProjectsButtonIsDisplayed = driver.findElement(By.cssSelector("[data-ga-click='Header, go to projects, text:your projects']")).isDisplayed();
-      Assert.assertTrue(yourProjectsButtonIsDisplayed,"yourProjectsButton is Displayed");
-      driver.findElement(By.cssSelector("[data-ga-click='Header, go to projects, text:your projects']")).click();
-      boolean newProjectButtonIsDisplayed = driver.findElement(By.xpath("//a[@class='btn btn-primary d-block d-md-inline-block float-md-right text-center']")).isDisplayed();
-      Assert.assertTrue(newProjectButtonIsDisplayed,"newProjectButton is Displayed");
-      boolean fieldQueryIsDisplayed = driver.findElement(By.id("query")).isDisplayed();
-      Assert.assertTrue(fieldQueryIsDisplayed,"fieldQuery is Displayed");
+        boolean fieldQueryIsDisplayed = driver.findElement(yourProjectsPage.queryField).isDisplayed();
+        Assert.assertTrue(fieldQueryIsDisplayed,"fieldQuery should be displayed");
 
-      driver.findElement(By.cssSelector("[aria-label='View profile and more']")).click();
-      boolean yourStarsButtonIsDisplayed = driver.findElement(By.cssSelector("[data-ga-click='Header, go to starred repos, text:your stars']")).isDisplayed();
-      Assert.assertTrue(yourStarsButtonIsDisplayed,"yourStarsButton is Displayed");
-      driver.findElement(By.cssSelector("[data-ga-click='Header, go to starred repos, text:your stars'")).click();
-      boolean filtersMenuIsDisplayed = driver.findElement(By.cssSelector("[aria-label='Show filters']")).isDisplayed();
-      Assert.assertTrue(filtersMenuIsDisplayed,"filtersMenu is Displayed");
+        boolean sortButtonIsSelected = driver.findElement(yourProjectsPage.sortButton).isSelected();
+        Assert.assertFalse(sortButtonIsSelected, "sortButton should not be selected");
 
-      driver.findElement(By.cssSelector("[aria-label='View profile and more']")).click();
-      boolean yourGistsButtonIsDisplayed = driver.findElement(By.cssSelector("[data-ga-click='Header, your gists, text:your gists']")).isDisplayed();
-      Assert.assertTrue(yourGistsButtonIsDisplayed,"yourGistsButton is Displayed");
-      driver.findElement(By.cssSelector("[data-ga-click='Header, your gists, text:your gists']")).click();
-      boolean gistsTabAllGists = driver.findElement(By.cssSelector("[aria-label='All gists']")).isDisplayed();
-      Assert.assertTrue(gistsTabAllGists, "All Gists is Displayed");
+    }
 
-      driver.findElement(By.cssSelector("[data-ga-click='Header, go to GitHub, text:Back to GitHub']")).click();
-      driver.findElement(By.cssSelector("[aria-label='View profile and more']")).click();
-      driver.findElement(By.xpath("//button[@class='dropdown-item btn-link']")).click();
-//      boolean disableButtonIsDisplayed = driver.findElement(By.name("selected_slug")).isDisplayed();
-//      Assert.assertTrue(disableButtonIsDisplayed,"disableButton is Displayed");
-      driver.findElement(By.xpath("//button[@class='Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0']")).click();
-      driver.findElement(By.cssSelector("[aria-label='View profile and more']")).click();
+   @Test (priority = 6)
+    public void yourStarsPage () {
+       driver.findElement(headerTabs.profileAndMoreMenuButton).click();
+       driver.findElement(yourStarsPage.yourStarsButton).click();
 
+       boolean filtersMenuIsDisplayed = driver.findElement(yourStarsPage.filtersMenu).isDisplayed();
+       Assert.assertTrue(filtersMenuIsDisplayed,"filtersMenu should be Displayed");
 
-      boolean settingsButtonIsDisplayed = driver.findElement(By.cssSelector("[data-ga-click='Header, go to settings, icon:settings']")).isDisplayed();
-      Assert.assertTrue(settingsButtonIsDisplayed,"settingsButton is Displayed");
-   driver.findElement(By.cssSelector("[data-ga-click='Header, go to settings, icon:settings']")).click();
-   boolean contributionsCheckBox = driver.findElement(By.cssSelector("[id='user_show_private_contribution_count']")).isSelected();
-   Assert.assertFalse(contributionsCheckBox, "contributionsCheckBox is not Selected");
-//      driver.quit();
-   }*/
+   }
 
+   @Test (priority = 7)
+    public void yourGistsPage () {
+       driver.findElement(headerTabs.profileAndMoreMenuButton).click();
+       driver.findElement(yourGistsPage.yourGistsButton).click();
 
+       boolean allGistsButtonIsDisplayed = driver.findElement(yourGistsPage.allGistsButton).isDisplayed();
+       Assert.assertTrue(allGistsButtonIsDisplayed, "All Gists button should be Displayed");
+
+       boolean allGistsHeaderTabIsDisplayed = driver.findElement(yourGistsPage.allGistsHeaderTab).isDisplayed();
+       Assert.assertTrue(allGistsHeaderTabIsDisplayed, "allGistsHeaderTab should be displayed");
+
+       driver.findElement(yourGistsPage.backToGitHubHeaderTab).click();
+   }
+
+   @Test (priority = 8)
+
+    public void featurePreviewPage () {
+       driver.findElement(headerTabs.profileAndMoreMenuButton).click();
+       driver.findElement(featurePreviewPage.featurePreviewButton).click();
+
+       boolean disableButtonIsDisplayed = driver.findElement(featurePreviewPage.disableButton).isDisplayed();
+      Assert.assertTrue(disableButtonIsDisplayed,"disableButton should be displayed");
+
+//      boolean notificationsImageIsDisplayed = driver.findElement(featurePreviewPage.notificationsImage).isDisplayed();
+//       Assert.assertTrue(notificationsImageIsDisplayed, "notificationsImage should be displayed");
+
+      driver.findElement(featurePreviewPage.featurePreviewCloseButton).click();
+   }
+
+   @Test (priority = 9)
+
+    public void helpPage () {
+       driver.findElement(headerTabs.profileAndMoreMenuButton).click();
+       driver.findElement(helpPage.helpPageButton).click();
+
+       boolean searchHelpIsDisplayed = driver.findElement(helpPage.searchHelp).isDisplayed();
+       Assert.assertTrue(searchHelpIsDisplayed, "searchHelp should be displayed");
+
+       boolean contactUsButtonIsDisplayed = driver.findElement(helpPage.contactUsButton).isDisplayed();
+       Assert.assertTrue(contactUsButtonIsDisplayed, "contactUsButton should be displayed");
+
+       driver.navigate().back();
+   }
+
+   @Test (priority = 10)
+
+    public void settingsPage () {
+       driver.findElement(headerTabs.profileAndMoreMenuButton).click();
+       driver.findElement(settingsPage.settingsButton).click();
+
+       boolean contributionsCheckBoxIsSelected = driver.findElement(settingsPage.contributionsCheckBox).isSelected();
+       Assert.assertFalse(contributionsCheckBoxIsSelected, "contributionsCheckBox should not be selected");
+
+       boolean jobsProfileCheckBoxIsSelected = driver.findElement(settingsPage.jobsProfileCheckBox).isSelected();
+       Assert.assertFalse(jobsProfileCheckBoxIsSelected, "jobsProfileCheckBox should not be selected");
+
+       boolean saveTrendingSettingsButtonIsDisplayed = driver.findElement(settingsPage.saveTrendingSettingsButton).isDisplayed();
+       Assert.assertTrue(saveTrendingSettingsButtonIsDisplayed, "saveTrendingSettingsButton should  be displayed");
+
+   }
+
+   @Test (priority = 11)
+    public void signOut () {
+       driver.findElement(headerTabs.profileAndMoreMenuButton).click();
+       driver.findElement(loginPage.signOutButton).click();
+
+   }
 
 }
 
