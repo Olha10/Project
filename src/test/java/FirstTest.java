@@ -11,7 +11,7 @@ import pages.*;
 public class FirstTest {
 
     WebDriver driver;
-    ElementsHelper elementsHelper = new ElementsHelper(driver);
+    ElementsHelper elementsHelper;
     LoginPage loginPage = new LoginPage();
     HeaderTabs headerTabs = new HeaderTabs();
     YourProfilePage yourProfilePage = new YourProfilePage();
@@ -24,10 +24,12 @@ public class FirstTest {
     SettingsPage settingsPage = new SettingsPage();
 
 
+
     @Test(priority = 1)
     public void logInPage() {
         ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
         driver = new ChromeDriver();
+        elementsHelper = new ElementsHelper(driver);
         driver.get("https://github.com/login");
         driver.manage().window().maximize();
         driver.findElement(loginPage.loginField).sendKeys("Olha10");
@@ -131,8 +133,7 @@ public class FirstTest {
         boolean disableButtonIsDisplayed = driver.findElement(featurePreviewPage.disableButton).isDisplayed();
         Assert.assertTrue(disableButtonIsDisplayed, "disableButton should be displayed");
 
-        Assert.assertTrue(elementsHelper.isElementVisible(featurePreviewPage.notificationsImage, 5), "notificationsImage should be displayed");
-
+        Assert.assertTrue(elementsHelper.isElementVisible(featurePreviewPage.notificationsImage, 5), "notificationsImage should be visible");
         driver.findElement(featurePreviewPage.featurePreviewCloseButton).click();
     }
 
@@ -170,7 +171,9 @@ public class FirstTest {
 
     @Test(priority = 11)
     public void signOut() {
+        Assert.assertTrue(elementsHelper.isElementVisible(headerTabs.profileAndMoreMenuButton, 5), "profileAndMoreMenuButton should be visible");
         driver.findElement(headerTabs.profileAndMoreMenuButton).click();
+        Assert.assertTrue(elementsHelper.isElementClickable(loginPage.signOutButton, 5), "signOutButton should be clickable");
         driver.findElement(loginPage.signOutButton).click();
     }
 

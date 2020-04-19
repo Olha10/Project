@@ -16,7 +16,7 @@ public class ElementsHelper {
 
         public boolean isElementPresence(By element, int timeout) {
 
-        WebDriverWait wait = new WebDriverWait (driver, timeout);
+        WebDriverWait wait = new WebDriverWait (driver,Duration.ofSeconds(10));
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(element));
             return true;
@@ -35,6 +35,19 @@ public class ElementsHelper {
             throw new RuntimeException("Web element is not visible: " + element, e);
         }
     }
+
+    public boolean isElementClickable (By element, int timeout) {
+
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       try {
+           wait.until(ExpectedConditions.elementToBeClickable(element));
+           return true;
+       }
+       catch (NoSuchElementException e) {
+           throw new RuntimeException("Web element is not clickable:" + element, e);
+       }
     }
+    }
+
 
 
