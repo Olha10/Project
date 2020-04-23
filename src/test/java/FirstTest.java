@@ -1,11 +1,13 @@
 import io.github.bonigarcia.wdm.*;
+import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
+
+
 
 
 public class FirstTest {
@@ -32,122 +34,120 @@ public class FirstTest {
         elementsHelper = new ElementsHelper(driver);
         driver.get("https://github.com/login");
         driver.manage().window().maximize();
+        Assert.assertTrue(elementsHelper.isElementPresence(loginPage.loginField,5),"Login field should be presence");
         driver.findElement(loginPage.loginField).sendKeys("Olha10");
         driver.findElement(loginPage.passwordField).sendKeys("krava1098");
-        driver.findElement(loginPage.signInButton).click();
+        elementsHelper.clickOnVisibleAndClickableElement(loginPage.signInButton,1);
     }
 
     @Test(priority = 2)
     public void checkHeaderTabs() {
 
-        boolean pullRequestsButtonIsDisplayed = driver.findElement(headerTabs.headerTabPullRequests).isDisplayed();
-        Assert.assertTrue(pullRequestsButtonIsDisplayed, "pullRequestsButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabPullRequests, 5), "pullRequestsButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabPullRequests,1),"Pull requests");
 
-        boolean issuesYouCreatedIsDisplayed = driver.findElement(headerTabs.headerTabIssues).isDisplayed();
-        Assert.assertTrue(issuesYouCreatedIsDisplayed, "issuesYouCreatedButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabIssues,1), "issuesYouCreatedButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabIssues,1),"Issues");
 
-        boolean marketplaceButtonIsDisplayed = driver.findElement(headerTabs.headerTabMarketplace).isDisplayed();
-        Assert.assertTrue(marketplaceButtonIsDisplayed, " marketplaceButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabMarketplace,1), " marketplaceButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabMarketplace,1),"Marketplace");
 
-        boolean exploreButtonIsDisplayed = driver.findElement(headerTabs.headerTabExplore).isDisplayed();
-        Assert.assertTrue(exploreButtonIsDisplayed, "exploreButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabExplore,1), "exploreButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabExplore,1),"Explore");
     }
 
     @Test(priority = 3)
     public void yourProfilePage() {
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        driver.findElement(yourProfilePage.yourProfileButton).click();
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
+        elementsHelper.clickOnVisibleAndClickableElement(yourProfilePage.yourProfileButton,5);
 
-        boolean overviewButtonIsDisplayed = driver.findElement(yourProfilePage.overviewProfileButton).isDisplayed();
-        Assert.assertTrue(overviewButtonIsDisplayed, "OverviewButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(yourProfilePage.overviewProfileButton,1), "OverviewButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProfilePage.overviewProfileButton, 1), "Overview");
 
-        boolean repositoriesButtonInYourProfileIsDisplayed = driver.findElement(yourProfilePage.repositoriesButton).isDisplayed();
-        Assert.assertTrue(repositoriesButtonInYourProfileIsDisplayed, "repositoriesButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(yourProfilePage.repositoriesButton,1), "repositoriesButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProfilePage.repositoriesButton, 1), "Repositories 1");
 
-        boolean editProfileButtonIsDisplayed = driver.findElement(yourProfilePage.editProfileButton).isDisplayed();
-        Assert.assertTrue(editProfileButtonIsDisplayed, "editProfileButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(yourProfilePage.editProfileButton,1), "editProfileButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProfilePage.editProfileButton, 1), "Edit profile");
     }
 
     @Test(priority = 4)
     public void yourRepositoriesPage() {
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        driver.findElement(yourRepositoriesPage.yourRepositoriesButton).click();
+       elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
+       elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.yourRepositoriesButton,5);
 
-        boolean searchYourRepositoryIsDisplayed = driver.findElement(yourRepositoriesPage.searchYourRepository).isDisplayed();
-        Assert.assertTrue(searchYourRepositoryIsDisplayed, "Repo filter should be displayed");
 
-        boolean typeOptionsIsSelected = driver.findElement(yourRepositoriesPage.typeOptions).isSelected();
-        Assert.assertFalse(typeOptionsIsSelected, "typeButton should not be selected");
+        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.searchYourRepository,1), "Repo filter should be visible");
 
-        boolean languageOptionsIsSelected = driver.findElement(yourRepositoriesPage.languageOptions).isSelected();
-        Assert.assertFalse(languageOptionsIsSelected, "languageOptions should not be selected");
+        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.typeOptions,5), "typeButton should  be visible");
+
+        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.languageOptions,5), "languageOptions should  be visible");
     }
 
     @Test(priority = 5)
     public void yourProjectsPage() {
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        driver.findElement(yourProjectsPage.yourProjectsButton).click();
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
+        elementsHelper.clickOnVisibleAndClickableElement(yourProjectsPage.yourProjectsButton,5);
 
-        boolean newProjectButtonIsDisplayed = driver.findElement(yourProjectsPage.newProjectButton).isDisplayed();
-        Assert.assertTrue(newProjectButtonIsDisplayed, "newProjectButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(yourProjectsPage.newProjectButton,5), "newProjectButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProjectsPage.newProjectButton,1),"New project");
 
-        boolean fieldQueryIsDisplayed = driver.findElement(yourProjectsPage.queryField).isDisplayed();
-        Assert.assertTrue(fieldQueryIsDisplayed, "fieldQuery should be displayed");
+        Assert.assertTrue(elementsHelper.isElementVisible(yourProjectsPage.queryField,1), "fieldQuery should be visible");
 
-        boolean sortButtonIsSelected = driver.findElement(yourProjectsPage.sortButton).isSelected();
-        Assert.assertFalse(sortButtonIsSelected, "sortButton should not be selected");
+        Assert.assertTrue(elementsHelper.isElementClickable(yourProjectsPage.sortButton,1), "sortButton should  be clickable");
 
     }
 
     @Test(priority = 6)
     public void yourStarsPage() {
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        driver.findElement(yourStarsPage.yourStarsButton).click();
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
+        elementsHelper.clickOnVisibleAndClickableElement(yourStarsPage.yourStarsButton,5);
 
-        boolean filtersMenuIsDisplayed = driver.findElement(yourStarsPage.filtersMenu).isDisplayed();
-        Assert.assertTrue(filtersMenuIsDisplayed, "filtersMenu should be Displayed");
+        Assert.assertTrue(elementsHelper.isElementVisible(yourStarsPage.filtersMenu,1), "filtersMenu should be visible");
 
+        Assert.assertTrue(elementsHelper.isElementVisible(yourStarsPage.starIcon,1),"StarIcon should be visible");
     }
 
     @Test(priority = 7)
     public void yourGistsPage() {
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        driver.findElement(yourGistsPage.yourGistsButton).click();
-//       elements.isELementPresence(yourGistsPage.allGistsButton,10);
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
+        elementsHelper.clickOnVisibleAndClickableElement(yourGistsPage.yourGistsButton,10);
 
-        boolean allGistsButtonIsDisplayed = driver.findElement(yourGistsPage.allGistsButton).isDisplayed();
-        Assert.assertTrue(allGistsButtonIsDisplayed, "All Gists button should be Displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(yourGistsPage.allGistsButton,5), "All Gists button should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourGistsPage.allGistsButton,1),"All gists 0");
 
-        boolean allGistsHeaderTabIsDisplayed = driver.findElement(yourGistsPage.allGistsHeaderTab).isDisplayed();
-        Assert.assertTrue(allGistsHeaderTabIsDisplayed, "allGistsHeaderTab should be displayed");
+        Assert.assertTrue(elementsHelper.isElementVisible(yourGistsPage.allGistsHeaderTab,1), "allGistsHeaderTab should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourGistsPage.allGistsHeaderTab,1),"All gists");
 
-        driver.findElement(yourGistsPage.backToGitHubHeaderTab).click();
+        elementsHelper.clickOnVisibleAndClickableElement(yourGistsPage.backToGitHubHeaderTab,10);
     }
 
     @Test(priority = 8)
 
     public void featurePreviewPage() {
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        driver.findElement(featurePreviewPage.featurePreviewButton).click();
 
-        boolean disableButtonIsDisplayed = driver.findElement(featurePreviewPage.disableButton).isDisplayed();
-        Assert.assertTrue(disableButtonIsDisplayed, "disableButton should be displayed");
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
+
+        elementsHelper.clickOnVisibleAndClickableElement(featurePreviewPage.featurePreviewButton,10);
+        
+        Assert.assertTrue(elementsHelper.isElementClickable(featurePreviewPage.disableButton, 5), "disableButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(featurePreviewPage.disableButton,1),"Disable");
 
         Assert.assertTrue(elementsHelper.isElementVisible(featurePreviewPage.notificationsImage, 5), "notificationsImage should be visible");
-        driver.findElement(featurePreviewPage.featurePreviewCloseButton).click();
+
+        elementsHelper.clickOnVisibleAndClickableElement(featurePreviewPage.featurePreviewCloseButton,10);
     }
 
     @Test(priority = 9)
 
     public void helpPage() {
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        driver.findElement(helpPage.helpPageButton).click();
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
+        elementsHelper.clickOnVisibleAndClickableElement(helpPage.helpPageButton,5);
 
-        boolean searchHelpIsDisplayed = driver.findElement(helpPage.searchHelp).isDisplayed();
-        Assert.assertTrue(searchHelpIsDisplayed, "searchHelp should be displayed");
+        Assert.assertTrue(elementsHelper.isElementVisible(helpPage.searchHelp,5), "searchHelp should be visible");
 
-        boolean contactUsButtonIsDisplayed = driver.findElement(helpPage.contactUsButton).isDisplayed();
-        Assert.assertTrue(contactUsButtonIsDisplayed, "contactUsButton should be displayed");
+        Assert.assertTrue(elementsHelper.isElementClickable(helpPage.contactUsButton,1), "contactUsButton should be clickable");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(helpPage.contactUsButton,1),"Contact us");
 
         driver.navigate().back();
     }
@@ -155,26 +155,24 @@ public class FirstTest {
     @Test(priority = 10)
 
     public void settingsPage() {
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        driver.findElement(settingsPage.settingsButton).click();
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
+        elementsHelper.clickOnVisibleAndClickableElement(settingsPage.settingsButton,5);
 
-        boolean contributionsCheckBoxIsSelected = driver.findElement(settingsPage.contributionsCheckBox).isSelected();
-        Assert.assertFalse(contributionsCheckBoxIsSelected, "contributionsCheckBox should not be selected");
+        Assert.assertTrue(elementsHelper.isElementClickable(settingsPage.contributionsCheckBox,5), "contributionsCheckBox should  be clickable");
 
-        boolean jobsProfileCheckBoxIsSelected = driver.findElement(settingsPage.jobsProfileCheckBox).isSelected();
-        Assert.assertFalse(jobsProfileCheckBoxIsSelected, "jobsProfileCheckBox should not be selected");
+        Assert.assertTrue(elementsHelper.isElementClickable(settingsPage.jobsProfileCheckBox,5), "jobsProfileCheckBox should  be clickable");
 
-        boolean saveTrendingSettingsButtonIsDisplayed = driver.findElement(settingsPage.saveTrendingSettingsButton).isDisplayed();
-        Assert.assertTrue(saveTrendingSettingsButtonIsDisplayed, "saveTrendingSettingsButton should  be displayed");
-
+        Assert.assertTrue(elementsHelper.isElementVisible(settingsPage.saveTrendingSettingsButton,5), "saveTrendingSettingsButton should  be visible");
+//        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(settingsPage.saveTrendingSettingsButton,1),"Save Trending settings");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(settingsPage.saveJobsProfileButton,5),"Save jobs profile");
     }
 
     @Test(priority = 11)
     public void signOut() {
-        Assert.assertTrue(elementsHelper.isElementVisible(headerTabs.profileAndMoreMenuButton, 5), "profileAndMoreMenuButton should be visible");
-        driver.findElement(headerTabs.profileAndMoreMenuButton).click();
-        Assert.assertTrue(elementsHelper.isElementClickable(loginPage.signOutButton, 5), "signOutButton should be clickable");
-        driver.findElement(loginPage.signOutButton).click();
+       elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
+
+        elementsHelper.clickOnVisibleAndClickableElement(loginPage.signOutButton,10);
+
     }
 
 }
