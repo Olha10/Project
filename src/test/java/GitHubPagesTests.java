@@ -1,6 +1,5 @@
+import Helpers.ElementsHelper;
 import io.github.bonigarcia.wdm.*;
-import org.checkerframework.checker.units.qual.A;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -10,10 +9,8 @@ import pages.*;
 
 
 
-public class FirstTest {
+public class GitHubPagesTests extends TestBase {
 
-    WebDriver driver;
-    ElementsHelper elementsHelper;
     LoginPage loginPage = new LoginPage();
     HeaderTabs headerTabs = new HeaderTabs();
     YourProfilePage yourProfilePage = new YourProfilePage();
@@ -27,20 +24,16 @@ public class FirstTest {
 
 
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "gitHubPages_tests")
     public void logInPage() {
-        ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
-        driver = new ChromeDriver();
-        elementsHelper = new ElementsHelper(driver);
-        driver.get("https://github.com/login");
-        driver.manage().window().maximize();
-        Assert.assertTrue(elementsHelper.isElementPresence(loginPage.loginField,5),"Login field should be presence");
+
+        Assert.assertTrue(elementsHelper.isElementPresence(loginPage.loginField,10),"Login field should be presence");
         driver.findElement(loginPage.loginField).sendKeys("Olha10");
         driver.findElement(loginPage.passwordField).sendKeys("krava1098");
         elementsHelper.clickOnVisibleAndClickableElement(loginPage.signInButton,1);
     }
 
-    @Test(priority = 2)
+    /*@Test(priority = 2, groups = "gitHubPages_tests")
     public void checkHeaderTabs() {
 
         Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabPullRequests, 5), "pullRequestsButton should be clickable");
@@ -56,7 +49,7 @@ public class FirstTest {
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabExplore,1),"Explore");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, groups = "gitHubPages_tests")
     public void yourProfilePage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
         elementsHelper.clickOnVisibleAndClickableElement(yourProfilePage.yourProfileButton,5);
@@ -71,7 +64,7 @@ public class FirstTest {
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProfilePage.editProfileButton, 1), "Edit profile");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, groups = "gitHubPages_tests")
     public void yourRepositoriesPage() {
        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
        elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.yourRepositoriesButton,5);
@@ -79,12 +72,19 @@ public class FirstTest {
 
         Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.searchYourRepository,1), "Repo filter should be visible");
 
-        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.typeOptions,5), "typeButton should  be visible");
+        Assert.assertTrue(elementsHelper.isElementClickable(yourRepositoriesPage.newButton,1),"New button should be clickable");
 
-        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.languageOptions,5), "languageOptions should  be visible");
+//        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.typeOptions,5), "typeButton should  be visible");
+//
+        elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.languageOptions,5);
+//        Assert.assertTrue(elementsHelper.isElementSelected(yourRepositoriesPage.selectLanguageAll,5));
+        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.selectLanguageAll,1),"label All should be visible");
+        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.selectLanguageJava,1),"label Java should be visible");
+        elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.languageOptions,5);
+//        elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.typeOptions,5);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, groups = "gitHubPages_tests")
     public void yourProjectsPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
         elementsHelper.clickOnVisibleAndClickableElement(yourProjectsPage.yourProjectsButton,5);
@@ -98,7 +98,7 @@ public class FirstTest {
 
     }
 
-    @Test(priority = 6)
+    @Test(priority = 6, groups = "gitHubPages_tests")
     public void yourStarsPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
         elementsHelper.clickOnVisibleAndClickableElement(yourStarsPage.yourStarsButton,5);
@@ -108,7 +108,7 @@ public class FirstTest {
         Assert.assertTrue(elementsHelper.isElementVisible(yourStarsPage.starIcon,1),"StarIcon should be visible");
     }
 
-    @Test(priority = 7)
+    @Test(priority = 7, groups = "gitHubPages_tests")
     public void yourGistsPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
         elementsHelper.clickOnVisibleAndClickableElement(yourGistsPage.yourGistsButton,10);
@@ -122,23 +122,23 @@ public class FirstTest {
         elementsHelper.clickOnVisibleAndClickableElement(yourGistsPage.backToGitHubHeaderTab,10);
     }
 
-    @Test(priority = 8)
+    @Test(priority = 8, groups = "gitHubPages_tests")
 
     public void featurePreviewPage() {
 
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
 
         elementsHelper.clickOnVisibleAndClickableElement(featurePreviewPage.featurePreviewButton,10);
-        
-        Assert.assertTrue(elementsHelper.isElementClickable(featurePreviewPage.disableButton, 5), "disableButton should be clickable");
-        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(featurePreviewPage.disableButton,1),"Disable");
 
-        Assert.assertTrue(elementsHelper.isElementVisible(featurePreviewPage.notificationsImage, 5), "notificationsImage should be visible");
+        Assert.assertTrue(elementsHelper.isElementVisible(featurePreviewPage.noFeaturesAvailableText,10));
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(featurePreviewPage.noFeaturesAvailableText,1),"No features available");
+
+       Assert.assertTrue(elementsHelper.isElementVisible(featurePreviewPage.catFeaturesImage,5));
 
         elementsHelper.clickOnVisibleAndClickableElement(featurePreviewPage.featurePreviewCloseButton,10);
     }
 
-    @Test(priority = 9)
+    @Test(priority = 9, groups = "gitHubPages_tests")
 
     public void helpPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
@@ -152,7 +152,7 @@ public class FirstTest {
         driver.navigate().back();
     }
 
-    @Test(priority = 10)
+    @Test(priority = 10, groups = "gitHubPages_tests")
 
     public void settingsPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
@@ -167,13 +167,13 @@ public class FirstTest {
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(settingsPage.saveJobsProfileButton,5),"Save jobs profile");
     }
 
-    @Test(priority = 11)
+    @Test(priority = 11, groups = "gitHubPages_tests")
     public void signOut() {
-       elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
+       elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
 
-        elementsHelper.clickOnVisibleAndClickableElement(loginPage.signOutButton,10);
+        elementsHelper.clickOnVisibleAndClickableElement(loginPage.signOutButton,5);
 
-    }
+    }*/
 
 }
 

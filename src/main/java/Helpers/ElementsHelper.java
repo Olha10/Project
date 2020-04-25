@@ -1,3 +1,5 @@
+package Helpers;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +18,7 @@ public class ElementsHelper {
 
         public boolean isElementPresence(By element, int timeout) {
 
-        WebDriverWait wait = new WebDriverWait (driver,Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait (driver,Duration.ofSeconds(timeout));
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(element));
             return true;
@@ -27,7 +29,7 @@ public class ElementsHelper {
 
     public boolean isElementVisible(By element, int timeout) {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
             return true;
@@ -38,7 +40,7 @@ public class ElementsHelper {
 
     public boolean isElementClickable (By element, int timeout) {
 
-       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
        try {
            wait.until(ExpectedConditions.elementToBeClickable(element));
            return true;
@@ -50,7 +52,7 @@ public class ElementsHelper {
     }
 
     public void clickOnVisibleAndClickableElement (By element,int timeout) {
-            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(timeout));
             try {
                 wait.until(ExpectedConditions.visibilityOfElementLocated(element));
                 wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -63,7 +65,7 @@ public class ElementsHelper {
 
     public String getElementTextVisibilityOf (By element, int timeout) {
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
             try {
                 wait.until(ExpectedConditions.visibilityOf(driver.findElement(element)));
                 return driver.findElement(element).getText();
@@ -76,7 +78,7 @@ public class ElementsHelper {
     }
 
     public boolean isElementSelected (By element, int timeout) {
-            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(timeout));
             try {
                 wait.until(ExpectedConditions.elementToBeSelected(element));
                 return true;
