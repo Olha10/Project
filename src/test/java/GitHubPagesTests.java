@@ -1,7 +1,3 @@
-import Helpers.ElementsHelper;
-import io.github.bonigarcia.wdm.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -33,7 +29,7 @@ public class GitHubPagesTests extends TestBase {
         elementsHelper.clickOnVisibleAndClickableElement(loginPage.signInButton,1);
     }
 
-    /*@Test(priority = 2, groups = "gitHubPages_tests")
+    @Test(priority = 2, groups = "gitHubPages_tests")
     public void checkHeaderTabs() {
 
         Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabPullRequests, 5), "pullRequestsButton should be clickable");
@@ -169,11 +165,12 @@ public class GitHubPagesTests extends TestBase {
 
     @Test(priority = 11, groups = "gitHubPages_tests")
     public void signOut() {
-       elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
 
-        elementsHelper.clickOnVisibleAndClickableElement(loginPage.signOutButton,5);
+       elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
 
-    }*/
+        driver.findElement(loginPage.signOutButton).click();
+
+    }
 
 }
 
