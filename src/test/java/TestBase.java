@@ -7,11 +7,23 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeGroups;
+import pages.*;
 
 public class TestBase {
     WebDriver driver;
     ElementsHelper elementsHelper;
     public String testUrl = ("https://github.com/login");
+    LoginPage loginPage = new LoginPage();
+    HeaderTabs headerTabs = new HeaderTabs();
+    YourProfilePage yourProfilePage = new YourProfilePage();
+    YourRepositoriesPage yourRepositoriesPage = new YourRepositoriesPage();
+    YourProjectsPage yourProjectsPage = new YourProjectsPage();
+    YourStarsPage yourStarsPage = new YourStarsPage();
+    YourGistsPage yourGistsPage = new YourGistsPage();
+    FeaturePreviewPage featurePreviewPage = new FeaturePreviewPage();
+    HelpPage helpPage = new HelpPage();
+    SettingsPage settingsPage = new SettingsPage();
+
 
     @BeforeGroups(groups = "gitHubPages_tests")
     public void BeforeTests (){

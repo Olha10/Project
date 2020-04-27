@@ -1,49 +1,13 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
+
+
+public class GitHubPagesTests extends LogInTests {
 
 
 
 
-public class GitHubPagesTests extends TestBase {
 
-    LoginPage loginPage = new LoginPage();
-    HeaderTabs headerTabs = new HeaderTabs();
-    YourProfilePage yourProfilePage = new YourProfilePage();
-    YourRepositoriesPage yourRepositoriesPage = new YourRepositoriesPage();
-    YourProjectsPage yourProjectsPage = new YourProjectsPage();
-    YourStarsPage yourStarsPage = new YourStarsPage();
-    YourGistsPage yourGistsPage = new YourGistsPage();
-    FeaturePreviewPage featurePreviewPage = new FeaturePreviewPage();
-    HelpPage helpPage = new HelpPage();
-    SettingsPage settingsPage = new SettingsPage();
-
-
-
-    @Test(priority = 1, groups = "gitHubPages_tests")
-    public void logInPage() {
-
-        Assert.assertTrue(elementsHelper.isElementPresence(loginPage.loginField,10),"Login field should be presence");
-        driver.findElement(loginPage.loginField).sendKeys("Olha10");
-        driver.findElement(loginPage.passwordField).sendKeys("krava1098");
-        elementsHelper.clickOnVisibleAndClickableElement(loginPage.signInButton,1);
-    }
-
-    @Test(priority = 2, groups = "gitHubPages_tests")
-    public void checkHeaderTabs() {
-
-        Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabPullRequests, 5), "pullRequestsButton should be clickable");
-        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabPullRequests,1),"Pull requests");
-
-        Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabIssues,1), "issuesYouCreatedButton should be clickable");
-        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabIssues,1),"Issues");
-
-        Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabMarketplace,1), " marketplaceButton should be clickable");
-        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabMarketplace,1),"Marketplace");
-
-        Assert.assertTrue(elementsHelper.isElementClickable(headerTabs.headerTabExplore,1), "exploreButton should be clickable");
-        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabs.headerTabExplore,1),"Explore");
-    }
 
     @Test(priority = 3, groups = "gitHubPages_tests")
     public void yourProfilePage() {
