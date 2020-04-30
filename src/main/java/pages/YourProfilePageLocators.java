@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 
-public class YourProfilePage {
+public class YourProfilePageLocators {
 
     public By yourProfileButton = (By.cssSelector("[data-ga-click='Header, go to profile, text:your profile']"));
     public By overviewProfileButton = (By.cssSelector("[class='UnderlineNav-body'] [aria-current='page']"));

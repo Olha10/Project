@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 
-public class YourGistsPage {
+public class YourGistsPageLocators {
 
     public By yourGistsButton = (By.cssSelector("[data-ga-click='Header, your gists, text:your gists']"));
     public By allGistsButton = (By.cssSelector("[aria-label='All gists']"));

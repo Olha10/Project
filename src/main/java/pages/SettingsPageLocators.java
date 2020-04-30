@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 
-public class SettingsPage {
+public class SettingsPageLocators {
 
     public By settingsButton = (By.cssSelector("[data-ga-click='Header, go to settings, icon:settings']"));
     public By contributionsCheckBox = (By.xpath("//input[@id='user_show_private_contribution_count']"));

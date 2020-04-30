@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 
-public class YourProjectsPage {
+public class YourProjectsPageLocators {
 
     public By yourProjectsButton = (By.cssSelector("[data-ga-click='Header, go to projects, text:your projects']"));
     public By newProjectButton = (By.cssSelector("[class='btn btn-primary d-block d-md-inline-block float-md-right text-center'] "));

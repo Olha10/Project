@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 
-public class FeaturePreviewPage {
+public class FeaturePreviewPageLocators {
 
     public By featurePreviewButton = (By.cssSelector("[class='dropdown-item btn-link']"));
     public By noFeaturesAvailableText = (By.cssSelector("[class='f2']"));

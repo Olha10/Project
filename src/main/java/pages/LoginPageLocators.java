@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 
-public class LoginPage {
+public class LoginPageLocators {
 
     public By loginField = (By.cssSelector("[id='login_field']"));
     public By passwordField = (By.cssSelector("[id='password']"));
