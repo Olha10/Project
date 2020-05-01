@@ -33,7 +33,12 @@ public class TestBase {
     }
 
     @AfterGroups(groups = "gitHubPages_tests")
-    public void AfterTests() {
+    public void SignOut() {
+
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton, 10);
+
+        elementsHelper.isElementPresence(loginPage.signOutButton, 10);
+        elementsHelper.clickOnVisibleAndClickableElement(loginPage.signOutButton, 5);
 
         driver.quit();
     }
