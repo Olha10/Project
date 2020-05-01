@@ -25,19 +25,16 @@ public class GitHubPagesTests extends LogInTests {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabsLocators.profileAndMoreMenuButton, 5);
         elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.yourRepositoriesButton, 5);
 
-
         Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.searchYourRepository, 1), "Repo filter should be visible");
 
         Assert.assertTrue(elementsHelper.isElementClickable(yourRepositoriesPage.newButton, 1), "New button should be clickable");
 
-//        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.typeOptions,5), "typeButton should  be visible");
-//
         elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.languageOptions, 5);
-//        Assert.assertTrue(elementsHelper.isElementSelected(yourRepositoriesPage.selectLanguageAll,5));
+
         Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.selectLanguageAll, 1), "label All should be visible");
         Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.selectLanguageJava, 1), "label Java should be visible");
         elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.languageOptions, 5);
-//        elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.typeOptions,5);
+
     }
 
     @Test(priority = 3, groups = "gitHubPages_tests")
