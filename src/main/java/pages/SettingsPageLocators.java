@@ -9,4 +9,5 @@ public class SettingsPageLocators {
     public By jobsProfileCheckBox = (By.cssSelector("[id='user_profile_hireable']"));
     public By saveTrendingSettingsButton = (By.cssSelector("[data-disable-with='Save Trending settings']"));
     public By saveJobsProfileButton = (By.xpath("//button[contains(text(),'Save jobs profile')]"));
+    public By updateContributionsButton = (By.xpath("//button[contains(text(),'Update contributions')]"));
 }
