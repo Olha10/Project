@@ -4,12 +4,7 @@ import org.testng.annotations.Test;
 
 public class GitHubPagesTests extends LogInTests {
 
-
-
-
-
-
-    @Test(priority = 3, groups = "gitHubPages_tests")
+    @Test(priority = 1, groups = "gitHubPages_tests")
     public void yourProfilePage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
         elementsHelper.clickOnVisibleAndClickableElement(yourProfilePage.yourProfileButton,5);
@@ -24,7 +19,7 @@ public class GitHubPagesTests extends LogInTests {
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProfilePage.editProfileButton, 1), "Edit profile");
     }
 
-    @Test(priority = 4, groups = "gitHubPages_tests")
+    @Test(priority = 2, groups = "gitHubPages_tests")
     public void yourRepositoriesPage() {
        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
        elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.yourRepositoriesButton,5);
@@ -44,7 +39,7 @@ public class GitHubPagesTests extends LogInTests {
 //        elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.typeOptions,5);
     }
 
-    @Test(priority = 5, groups = "gitHubPages_tests")
+    @Test(priority = 3, groups = "gitHubPages_tests")
     public void yourProjectsPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
         elementsHelper.clickOnVisibleAndClickableElement(yourProjectsPage.yourProjectsButton,5);
@@ -58,7 +53,7 @@ public class GitHubPagesTests extends LogInTests {
 
     }
 
-    @Test(priority = 6, groups = "gitHubPages_tests")
+    @Test(priority = 4, groups = "gitHubPages_tests")
     public void yourStarsPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
         elementsHelper.clickOnVisibleAndClickableElement(yourStarsPage.yourStarsButton,5);
@@ -68,7 +63,7 @@ public class GitHubPagesTests extends LogInTests {
         Assert.assertTrue(elementsHelper.isElementVisible(yourStarsPage.starIcon,1),"StarIcon should be visible");
     }
 
-    @Test(priority = 7, groups = "gitHubPages_tests")
+    @Test(priority = 5, groups = "gitHubPages_tests")
     public void yourGistsPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
         elementsHelper.clickOnVisibleAndClickableElement(yourGistsPage.yourGistsButton,10);
@@ -82,7 +77,7 @@ public class GitHubPagesTests extends LogInTests {
         elementsHelper.clickOnVisibleAndClickableElement(yourGistsPage.backToGitHubHeaderTab,10);
     }
 
-    @Test(priority = 8, groups = "gitHubPages_tests")
+    @Test(priority = 6, groups = "gitHubPages_tests")
 
     public void featurePreviewPage() {
 
@@ -98,7 +93,7 @@ public class GitHubPagesTests extends LogInTests {
         elementsHelper.clickOnVisibleAndClickableElement(featurePreviewPage.featurePreviewCloseButton,10);
     }
 
-    @Test(priority = 9, groups = "gitHubPages_tests")
+    @Test(priority = 7, groups = "gitHubPages_tests")
 
     public void helpPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
@@ -112,7 +107,7 @@ public class GitHubPagesTests extends LogInTests {
         driver.navigate().back();
     }
 
-    @Test(priority = 10, groups = "gitHubPages_tests")
+    @Test(priority = 8, groups = "gitHubPages_tests")
 
     public void settingsPage() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
@@ -125,15 +120,6 @@ public class GitHubPagesTests extends LogInTests {
         Assert.assertTrue(elementsHelper.isElementVisible(settingsPage.saveTrendingSettingsButton,5), "saveTrendingSettingsButton should  be visible");
 //        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(settingsPage.saveTrendingSettingsButton,1),"Save Trending settings");
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(settingsPage.saveJobsProfileButton,5),"Save jobs profile");
-    }
-
-    @Test(priority = 11, groups = "gitHubPages_tests")
-    public void signOut() {
-
-       elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
-
-        driver.findElement(loginPage.signOutButton).click();
-
     }
 
 }
