@@ -26,7 +26,7 @@ public class GitHubPagesTests extends LogInTests {
         elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.yourRepositoriesButton, 5);
 
 
-        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.searchYourRepository, 1), "Repo filter should be visible");
+        Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.searchInputYourRepository, 1), "Repo filter should be visible");
 
         Assert.assertTrue(elementsHelper.isElementClickable(yourRepositoriesPage.newButton, 1), "New button should be clickable");
 
