@@ -15,12 +15,4 @@ public class LogInTests extends TestBase {
         elementsHelper.clickOnVisibleAndClickableElement(loginPageLocators.signInButton,5);
     }
 
-    @AfterGroups (groups = "gitHubPages_tests")
-    public void SignOutTest () {
-
-        elementsHelper.clickOnVisibleAndClickableElement(headerTabsLocators.profileAndMoreMenuButton, 10);
-        elementsHelper.isElementPresence(loginPageLocators.signOutButton,10);
-        elementsHelper.clickOnVisibleAndClickableElement(loginPageLocators.signOutButton,5);
-
-    }
 }

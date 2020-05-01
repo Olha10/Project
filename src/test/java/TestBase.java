@@ -57,7 +57,10 @@ public class TestBase {
         }
 
     @AfterGroups (groups = "gitHubPages_tests")
-    public void BrowserQuit () {
+    public void SignOut () {
+        elementsHelper.clickOnVisibleAndClickableElement(headerTabsLocators.profileAndMoreMenuButton, 10);
+        elementsHelper.isElementPresence(loginPageLocators.signOutButton,10);
+        elementsHelper.clickOnVisibleAndClickableElement(loginPageLocators.signOutButton,5);
         driver.quit();
     }
 }
