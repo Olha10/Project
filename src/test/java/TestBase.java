@@ -1,10 +1,8 @@
 import Helpers.ElementsHelper;
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.DriverManagerType;
-import io.github.bonigarcia.wdm.OperaDriverManager;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.AfterGroups;
@@ -47,7 +45,8 @@ public class TestBase {
                 driver = new OperaDriver();
                 break;
             case EDGE:
-                // EDGE driver
+                EdgeDriverManager.getInstance(DriverManagerType.EDGE).setup();
+                driver = new EdgeDriver();
                 break;
             default:
                 throw new RuntimeException("Invalid specified browser:" + browser + ",expected one of 'CHROME', 'FIREFOX', 'OPERA', 'EDGE'");
@@ -58,7 +57,7 @@ public class TestBase {
         }
 
     @AfterGroups (groups = "gitHubPages_tests")
-    public void AfterTests () {
+    public void BrowserQuit () {
         driver.quit();
     }
 }
