@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 public class YourProfilePageTests extends LogInPageTests {
     @Test(priority = 1, groups = "gitHubPages_tests")
     public void yourProfileNavButtons() {
-
+    //sadf
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
         elementsHelper.clickOnVisibleAndClickableElement(yourProfilePage.yourProfileButton,5);
 
