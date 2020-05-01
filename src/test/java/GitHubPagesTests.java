@@ -8,12 +8,6 @@ import pages.*;
 public class GitHubPagesTests extends TestBase {
 
 
-
-
-
-
-
-
     @Test(priority = 4, groups = "gitHubPages_tests")
     public void yourRepositoriesPage() {
        elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
@@ -117,14 +111,6 @@ public class GitHubPagesTests extends TestBase {
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(settingsPage.saveJobsProfileButton,5),"Save jobs profile");
     }
 
-    @Test(priority = 11, groups = "gitHubPages_tests")
-    public void signOut() {
-
-       elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,10);
-
-        driver.findElement(loginPage.signOutButton).click();
-
-    }
 
 }
 
