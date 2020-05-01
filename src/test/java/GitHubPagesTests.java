@@ -47,7 +47,7 @@ public class GitHubPagesTests extends LogInTests {
 
         Assert.assertTrue(elementsHelper.isElementVisible(yourProjectsPageLocators.queryField, 1), "fieldQuery should be visible");
 
-        Assert.assertTrue(elementsHelper.isElementClickable(yourProjectsPageLocators.sortButton, 1), "sortButton should  be clickable");
+        Assert.assertTrue(elementsHelper.isElementClickable(yourProjectsPageLocators.sortMenuButton, 1), "sortButton should  be clickable");
 
     }
 
