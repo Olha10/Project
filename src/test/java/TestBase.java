@@ -1,4 +1,4 @@
-import Helpers.ElementsHelper;
+import helpers.ElementsHelper;
 import io.github.bonigarcia.wdm.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +16,7 @@ public class TestBase {
     public String testUrl = ("https://github.com/login");
     LoginPageLocators loginPageLocators = new LoginPageLocators();
     HeaderTabsLocators headerTabsLocators = new HeaderTabsLocators();
-    YourProfilePageLocators yourProfilePageLocators = new YourProfilePageLocators();
+    YourProfilePageLocators  yourProfilePageLocators = new YourProfilePageLocators ();
     YourRepositoriesPageLocators yourRepositoriesPage = new YourRepositoriesPageLocators();
     YourProjectsPageLocators yourProjectsPageLocators = new YourProjectsPageLocators();
     YourStarsPageLocators yourStarsPageLocators = new YourStarsPageLocators();
@@ -24,13 +24,11 @@ public class TestBase {
     FeaturePreviewPageLocators featurePreviewPageLocators = new FeaturePreviewPageLocators();
     HelpPageLocators helpPageLocators = new HelpPageLocators();
     SettingsPageLocators settingsPageLocators = new SettingsPageLocators();
-
-
+    ViewProfileDetailsMenuLocators viewProfileDetailsMenuLocators = new ViewProfileDetailsMenuLocators();
 
     @BeforeGroups(groups = "gitHubPages_tests")
     @Parameters("browser")
     public void setUp (Browsers browser){
-
         switch (browser) {
             case CHROME:
             ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
@@ -59,8 +57,8 @@ public class TestBase {
     @AfterGroups (groups = "gitHubPages_tests")
     public void SignOut () {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabsLocators.profileAndMoreMenuButton, 10);
-        elementsHelper.isElementPresence(loginPageLocators.signOutButton,10);
-        elementsHelper.clickOnVisibleAndClickableElement(loginPageLocators.signOutButton,5);
+        elementsHelper.isElementPresent(viewProfileDetailsMenuLocators.signOutButton,10);
+        elementsHelper.clickOnVisibleAndClickableElement(viewProfileDetailsMenuLocators.signOutButton,5);
         driver.quit();
     }
 }
