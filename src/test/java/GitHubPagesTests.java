@@ -1,8 +1,17 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.*;
 
 
 public class GitHubPagesTests extends LogInTests {
+    YourProfilePageLocators yourProfilePageLocators = new YourProfilePageLocators ();
+    YourRepositoriesPageLocators yourRepositoriesPage = new YourRepositoriesPageLocators();
+    YourProjectsPageLocators yourProjectsPageLocators = new YourProjectsPageLocators();
+    YourStarsPageLocators yourStarsPageLocators = new YourStarsPageLocators();
+    YourGistsPageLocators yourGistsPageLocators = new YourGistsPageLocators();
+    FeaturePreviewPageLocators featurePreviewPageLocators = new FeaturePreviewPageLocators();
+    HelpPageLocators helpPageLocators = new HelpPageLocators();
+    SettingsPageLocators settingsPageLocators = new SettingsPageLocators();
 
     @Test(priority = 1, groups = "gitHubPages_tests")
     public void yourProfilePage() {

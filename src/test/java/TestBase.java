@@ -14,16 +14,7 @@ public class TestBase {
     WebDriver driver;
     ElementsHelper elementsHelper;
     public String testUrl = ("https://github.com/login");
-    LoginPageLocators loginPageLocators = new LoginPageLocators();
     HeaderTabsLocators headerTabsLocators = new HeaderTabsLocators();
-    YourProfilePageLocators  yourProfilePageLocators = new YourProfilePageLocators ();
-    YourRepositoriesPageLocators yourRepositoriesPage = new YourRepositoriesPageLocators();
-    YourProjectsPageLocators yourProjectsPageLocators = new YourProjectsPageLocators();
-    YourStarsPageLocators yourStarsPageLocators = new YourStarsPageLocators();
-    YourGistsPageLocators yourGistsPageLocators = new YourGistsPageLocators();
-    FeaturePreviewPageLocators featurePreviewPageLocators = new FeaturePreviewPageLocators();
-    HelpPageLocators helpPageLocators = new HelpPageLocators();
-    SettingsPageLocators settingsPageLocators = new SettingsPageLocators();
     ViewProfileDetailsMenuLocators viewProfileDetailsMenuLocators = new ViewProfileDetailsMenuLocators();
 
     @BeforeGroups(groups = "gitHubPages_tests")
