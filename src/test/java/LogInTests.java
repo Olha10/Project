@@ -8,7 +8,7 @@ String password = "krava1098";
     @BeforeGroups (groups = "gitHubPages_tests")
     public void LogInTest () {
         elementsHelper.textInputField(loginPageLocators.loginField,10,login);
-        elementsHelper.textInputField(loginPageLocators.loginField,10,password);
+        elementsHelper.textInputField(loginPageLocators.passwordField,10,password);
         elementsHelper.clickOnVisibleAndClickableElement(loginPageLocators.signInButton,5);
     }
 }
