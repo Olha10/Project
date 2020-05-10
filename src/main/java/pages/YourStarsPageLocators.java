@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 
 public class YourStarsPageLocators {
-
-    public By yourStarsButton = (By.cssSelector("[data-ga-click='Header, go to starred repos, text:your stars'"));
     public By filtersMenu = (By.cssSelector("[aria-label='Show filters']"));
     public By starIcon = (By.cssSelector("[class='octicon octicon-star blankslate-icon']"));
     public By searchButtonFiltersMenu = (By.xpath("//button[@class='btn']"));
