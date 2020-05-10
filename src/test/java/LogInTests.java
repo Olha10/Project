@@ -1,18 +1,14 @@
-import Helpers.ElementsHelper;
 import org.testng.Assert;
-import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeGroups;
 
 public class LogInTests extends TestBase {
-
+String login = "Olha10";
+String password = "krava1098";
 
     @BeforeGroups (groups = "gitHubPages_tests")
     public void LogInTest () {
-
-        Assert.assertTrue(elementsHelper.isElementPresence(loginPageLocators.loginField,10),"Login field should be presence");
-        driver.findElement(loginPageLocators.loginField).sendKeys("Olha10");
-        driver.findElement(loginPageLocators.passwordField).sendKeys("krava1098");
+        elementsHelper.textInputField(loginPageLocators.loginField,10,login);
+        elementsHelper.textInputField(loginPageLocators.loginField,10,password);
         elementsHelper.clickOnVisibleAndClickableElement(loginPageLocators.signInButton,5);
     }
-
 }
