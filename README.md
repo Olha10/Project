@@ -9,12 +9,5 @@
 - 6.You should make sure that Maven is written in the paths (if os Windows).
 ######
 **Run tests**:
-- 1.Create testng.xml and write suites, classes and tests in which you will run tests 
-- 2.Create a parameter where name=browser and variable "browser" in testng.xml
-- 3.Add maven-surefire-plugin to pom.xml (use mvn documentation)
-- 4.Write a variable for the testng.xml in surefire-plugin
-(example, <suiteXmlFile>src/test/resources/${filename}.xml</suiteXmlFile>)
-- 5.Add dependencies for browser driver (ex. chrome driver)
-- 6.Create Enum file, and create enum class Browsers there, where write browsers which you will use
-- 7.Create setUp class with @Parameters ("browser") and switch-case structure with browsers which you will use in this class
-- 8.Use command "mvn package -D{{filename}}=testng -Dbrowser=CHROME", where -D is parameter
+- 1.Use command "mvn package -Dgolova=testng -Dbrowser=CHROME", where -D is parameter and golova and browser are variables
+- 2.In -Dbrowser=CHROME you can choose also FIREFOX or OPERA 
