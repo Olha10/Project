@@ -5,7 +5,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class ElementsHelper {
@@ -66,6 +65,16 @@ public class ElementsHelper {
         } catch (NoSuchElementException e) {
 
             throw new RuntimeException("Web element is not presence within timeout:" + element + "Time" + timeout, e);
+        }
+    }
+
+    public void textInputField(By inputFieldElement, int timeout, String inputText) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(inputFieldElement));
+            driver.findElement(inputFieldElement).sendKeys(inputText);
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("Web element is not present:" + inputFieldElement + "Time" + timeout, e);
         }
     }
 
