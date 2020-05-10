@@ -13,18 +13,10 @@ public class TestBase {
     public String testUrl = ("https://github.com/login");
     LoginPage loginPage = new LoginPage();
     HeaderTabs headerTabs = new HeaderTabs();
-    YourProfilePage yourProfilePage = new YourProfilePage();
-    YourRepositoriesPage yourRepositoriesPage = new YourRepositoriesPage();
-    YourProjectsPage yourProjectsPage = new YourProjectsPage();
-    YourStarsPage yourStarsPage = new YourStarsPage();
-    YourGistsPage yourGistsPage = new YourGistsPage();
-    FeaturePreviewPage featurePreviewPage = new FeaturePreviewPage();
-    HelpPage helpPage = new HelpPage();
-    SettingsPage settingsPage = new SettingsPage();
+    ViewProfileDetailsMenuLocators viewProfileDetailsMenuLocators = new ViewProfileDetailsMenuLocators();
 
     @BeforeGroups(groups = "gitHubPages_tests")
     public void BeforeTests() {
-
         ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
         driver = new ChromeDriver();
         elementsHelper = new ElementsHelper(driver);
@@ -34,12 +26,9 @@ public class TestBase {
 
     @AfterGroups(groups = "gitHubPages_tests")
     public void SignOut() {
-
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton, 10);
-
-        elementsHelper.isElementPresence(loginPage.signOutButton, 10);
-        elementsHelper.clickOnVisibleAndClickableElement(loginPage.signOutButton, 5);
-
+        elementsHelper.isElementPresent(viewProfileDetailsMenuLocators.signOutButton, 10);
+        elementsHelper.clickOnVisibleAndClickableElement(viewProfileDetailsMenuLocators.signOutButton, 5);
         driver.quit();
     }
 }

@@ -1,12 +1,14 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.YourProfilePage;
 
 public class YourProfilePageTests extends LogInPageTests {
+    YourProfilePage yourProfilePage = new YourProfilePage();
+
     @Test(priority = 1, groups = "gitHubPages_tests")
     public void yourProfileNavButtons() {
-
         elementsHelper.clickOnVisibleAndClickableElement(headerTabs.profileAndMoreMenuButton,5);
-        elementsHelper.clickOnVisibleAndClickableElement(yourProfilePage.yourProfileButton,5);
+        elementsHelper.clickOnVisibleAndClickableElement(viewProfileDetailsMenuLocators.yourProfileButton,5);
 
         elementsHelper.clickOnVisibleAndClickableElement(yourProfilePage.overviewProfileNavButton,5);
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProfilePage.overviewProfileNavButton, 5), "Overview");
@@ -28,14 +30,11 @@ public class YourProfilePageTests extends LogInPageTests {
 
         elementsHelper.clickOnVisibleAndClickableElement(yourProfilePage.followingProfileNavButton,5);
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProfilePage.followingProfileNavButton, 5), "Following 0");
-
     }
 
     @Test (priority = 2, groups = "gitHubPages_tests")
     public void yourProfileButtons (){
-
         Assert.assertTrue(elementsHelper.isElementClickable(yourProfilePage.editProfileButton,5), "editProfileButton should be clickable");
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourProfilePage.editProfileButton, 5), "Edit profile");
-
     }
 }
