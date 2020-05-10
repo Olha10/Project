@@ -60,7 +60,7 @@ public class ElementsHelper {
     public String getElementTextVisibilityOf(By element, int timeout) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         try {
-            wait.until(ExpectedConditions.visibilityOf(driver.findElement(element)));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(element));
             return driver.findElement(element).getText();
 
         } catch (NoSuchElementException e) {
@@ -75,7 +75,7 @@ public class ElementsHelper {
             wait.until(ExpectedConditions.elementToBeSelected(element));
             return true;
         } catch (NoSuchElementException e) {
-            throw new RuntimeException("Web element is not selected:" + element, e);
+            throw new RuntimeException("Web element is not selected:" + element + "Time" + timeout, e);
         }
     }
 
