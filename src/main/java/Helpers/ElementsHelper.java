@@ -1,11 +1,10 @@
-package Helpers;
+package helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class ElementsHelper {
@@ -58,7 +57,6 @@ public class ElementsHelper {
     }
 
     public String getElementTextVisibilityOf(By element, int timeout) {
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
