@@ -7,7 +7,7 @@ public class LogInTests extends TestBase {
     @BeforeGroups(groups = "gitHubPages_tests")
     public void LogInTest() {
         elementsHelper.textInputField(loginPage.loginField, 10, login);
-        elementsHelper.textInputField(loginPage.loginField, 10, password);
+        elementsHelper.textInputField(loginPage.passwordField, 10, password);
         elementsHelper.clickOnVisibleAndClickableElement(loginPage.signInButton, 5);
     }
 
