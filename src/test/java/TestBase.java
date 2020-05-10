@@ -1,4 +1,4 @@
-import Helpers.ElementsHelper;
+import helpers.ElementsHelper;
 import io.github.bonigarcia.wdm.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,7 +19,7 @@ public class TestBase {
 
     @BeforeGroups(groups = "gitHubPages_tests")
     @Parameters("browser")
-    public void setUp(Browsers browser) {
+    public void setUp (Browsers browser){
         switch (browser) {
             case CHROME:
                 ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
@@ -48,8 +48,8 @@ public class TestBase {
     @AfterGroups(groups = "gitHubPages_tests")
     public void SignOut() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabsLocators.profileAndMoreMenuButton, 10);
-        elementsHelper.isElementPresent(viewProfileDetailsMenuLocators.signOutButton, 10);
-        elementsHelper.clickOnVisibleAndClickableElement(viewProfileDetailsMenuLocators.signOutButton, 5);
+        elementsHelper.isElementPresent(viewProfileDetailsMenuLocators.signOutButton,10);
+        elementsHelper.clickOnVisibleAndClickableElement(viewProfileDetailsMenuLocators.signOutButton,5);
         driver.quit();
     }
 
