@@ -1,18 +1,19 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.YourRepositoriesPageLocators;
 
 public class YourRepositoriesPageTests extends LogInTests {
+    YourRepositoriesPageLocators yourRepositoriesPage = new YourRepositoriesPageLocators();
 
     @Test(priority = 1, groups = "gitHubPages_tests")
     public void repoSearchInputTest() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabsLocators.profileAndMoreMenuButton, 5);
-        elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.yourRepositoriesButton, 5);
-
-
+        elementsHelper.clickOnVisibleAndClickableElement(viewProfileDetailsMenuLocators.yourRepositoriesButton, 5);
         elementsHelper.clickOnVisibleAndClickableElement(yourRepositoriesPage.searchInputYourRepository, 10);
-        driver.findElement(yourRepositoriesPage.searchInputYourRepository).sendKeys("Project");
+        elementsHelper.textInputField(yourRepositoriesPage.searchInputYourRepository, 10, "Project");
         Assert.assertTrue(elementsHelper.isElementVisible(yourRepositoriesPage.repoSearchResults, 15));
-        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourRepositoriesPage.repoSearchResults, 10), "1 result for repositories matching Project");
+        Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(yourRepositoriesPage.repoSearchResults, 10),
+                "1 result for repositories matching Project");
     }
 
     @Test(priority = 2, groups = "gitHubPages_tests")
@@ -40,6 +41,5 @@ public class YourRepositoriesPageTests extends LogInTests {
     public void newButtonTest() {
         Assert.assertTrue(elementsHelper.isElementClickable(yourRepositoriesPage.newButton, 5), "New button should be clickable");
     }
-
 
 }

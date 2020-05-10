@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 
 public class YourRepositoriesPageLocators {
-    public By yourRepositoriesButton = (By.cssSelector("[data-ga-click='Header, go to repositories, text:your repositories']"));
     public  By searchInputYourRepository = (By.cssSelector("[id='your-repos-filter']"));
     public By typeOptions = (By.xpath("//details[@id='type-options']//summary[@class='btn']"));
     public By languageOptions = (By.cssSelector("[id='language-options']"));
@@ -18,5 +17,4 @@ public class YourRepositoriesPageLocators {
     public By selectTypeForks = (By.xpath("//label[5]"));
     public By selectTypeArchived = (By.xpath("//label[6]"));
     public By selectTypeMirrors = (By.xpath("//label[7]"));
-
 }
