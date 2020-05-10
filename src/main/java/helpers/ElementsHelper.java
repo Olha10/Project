@@ -61,9 +61,7 @@ public class ElementsHelper {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
             return driver.findElement(element).getText();
-
         } catch (NoSuchElementException e) {
-
             throw new RuntimeException("Web element is not presence within timeout:" + element + "Time" + timeout, e);
         }
     }
