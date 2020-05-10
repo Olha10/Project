@@ -22,9 +22,9 @@ public class TestBase {
     public void setUp (Browsers browser){
         switch (browser) {
             case CHROME:
-            ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
-            driver = new ChromeDriver();
-            break;
+                ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
+                driver = new ChromeDriver();
+                break;
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
@@ -43,14 +43,15 @@ public class TestBase {
         elementsHelper = new ElementsHelper(driver);
         driver.get(testUrl);
         driver.manage().window().maximize();
-        }
+    }
 
-    @AfterGroups (groups = "gitHubPages_tests")
-    public void SignOut () {
+    @AfterGroups(groups = "gitHubPages_tests")
+    public void SignOut() {
         elementsHelper.clickOnVisibleAndClickableElement(headerTabsLocators.profileAndMoreMenuButton, 10);
         elementsHelper.isElementPresent(viewProfileDetailsMenuLocators.signOutButton,10);
         elementsHelper.clickOnVisibleAndClickableElement(viewProfileDetailsMenuLocators.signOutButton,5);
         driver.quit();
     }
+
 }
 

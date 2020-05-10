@@ -17,5 +17,4 @@ public class HeaderTabsTests extends LogInTests {
         Assert.assertTrue(elementsHelper.isElementClickable(headerTabsLocators.headerTabExplore,1), "exploreButton should be clickable");
         Assert.assertEquals(elementsHelper.getElementTextVisibilityOf(headerTabsLocators.headerTabExplore,1),"Explore");
     }
-
 }
