@@ -17,7 +17,6 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -33,7 +32,6 @@
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -81,8 +79,6 @@
             <artifactId>selenium-java</artifactId>
             <version>4.0.0-alpha-5</version>
         </dependency>
-
     </dependencies>
 
-
-</project >
+</project>
